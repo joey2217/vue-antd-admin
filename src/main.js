@@ -5,6 +5,12 @@ import store from './store';
 
 import './plugins/antd';
 
+// mock
+import mock from '../mock';
+if (process.env.NODE_ENV === 'production') {
+  mock();
+}
+
 Vue.config.productionTip = false;
 
 new Vue({
