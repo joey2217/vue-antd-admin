@@ -20,7 +20,7 @@ export default {
     Navbar,
     AppContent
   },
-  data () {
+  data() {
     return {
       collapsed: false
     };
@@ -32,19 +32,29 @@ export default {
 #layout {
   min-height: 100%;
   height: 100vh;
-  .logo {
-    height: 32px;
-    background: rgba(255, 255, 255, 0.2);
-    margin: 16px;
-  }
-  .trigger {
-    font-size: 18px;
-    line-height: 64px;
-    padding: 0 24px;
-    cursor: pointer;
-    transition: color 0.3s;
-    &:hover {
-      color: #1890ff;
+  .navbar {
+    display: flex;
+    &-left {
+      display: flex;
+      align-items: center;
+      .trigger {
+        font-size: 18px;
+        line-height: 64px;
+        padding: 0 24px;
+        cursor: pointer;
+        transition: color 0.3s;
+        &:hover {
+          color: #1890ff;
+        }
+      }
+      .breadcrumb{
+        padding-bottom: 5px;
+      }
+    }
+    &-right{
+      margin-left: auto;
+      display: flex;
+      align-items: center;
     }
   }
 }

@@ -3,7 +3,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'https://mock-server-eight.now.sh/api/react-antd-admin/',
+        target: 'https://mock-server-eight.now.sh/api/vue-antd-admin/',
         changeOrigin: true
       },
     }

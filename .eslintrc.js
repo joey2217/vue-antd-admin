@@ -16,6 +16,7 @@ module.exports = {
     semi: [2, 'always'],
     'comma-dangle': [2, 'only-multiline'],
     'prefer-template': 2,
+    'space-before-function-paren': [2, 'never'],
   },
   overrides: [
     {

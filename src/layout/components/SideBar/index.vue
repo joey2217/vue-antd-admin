@@ -27,7 +27,7 @@ import SubMenu from './SubMenu.vue';
 export default {
   name: 'SideBar',
   components: { Logo, SubMenu },
-  data () {
+  data() {
     return {
       menus: [
         {
@@ -59,11 +59,11 @@ export default {
     ...mapMutations({
       toggleCollapsed: 'app/TOGGLE_COLLAPSED'
     }),
-    onMenuClick ({ key }) {
+    onMenuClick({ key }) {
       console.log(key);
     }
   },
-  mounted () {}
+  mounted() {}
 };
 </script>
 

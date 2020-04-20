@@ -23,7 +23,7 @@
             </a-input-password>
           </a-form-item>
           <a-form-item>
-            <a-button type="primary" html-type="submit" class="login-button">Log in</a-button>
+            <a-button :loading="loading" type="primary" html-type="submit" class="login-button">Log in</a-button>
           </a-form-item>
         </a-form>
       </a-card>
@@ -36,21 +36,29 @@ import { login } from '@/api/user';
 
 export default {
   name: 'Login',
-  beforeCreate () {
+  beforeCreate() {
     this.form = this.$form.createForm(this, { name: 'login' });
   },
+  data() {
+    return {
+      loading: false
+    };
+  },
   methods: {
-    handleSubmit (e) {
+    handleSubmit(e) {
       e.preventDefault();
-      this.form.validateFields(async (err, values) => {
+      this.form.validateFields(async(err, values) => {
         try {
           if (!err) {
+            this.loading = true;
             console.log('Received values of form: ', values);
             const { message } = await login(values);
             this.$message.success(message);
-            this.$router.push('/');
+            const redirect = this.$route.query.redirect;
+            this.$router.push(redirect || '/');
           }
         } catch (error) {
+          this.loading = false;
           console.error(error);
         }
       });

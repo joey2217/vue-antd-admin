@@ -13,10 +13,10 @@ const axiosInstance = axios.create({
 // });
 
 // 添加响应拦截器
-axiosInstance.interceptors.response.use(function (response) {
+axiosInstance.interceptors.response.use(function(response) {
   // 对响应数据做点什么
   return response.data;
-}, function (error) {
+}, function(error) {
   // 对响应错误做点什么
   console.error(error);
   message.error(error.message || 'OOPS,出错了!');

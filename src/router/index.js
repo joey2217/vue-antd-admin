@@ -47,23 +47,27 @@ const router = new VueRouter({
 });
 
 // 角色
-const roles = store.state.user.roles;
 
-router.beforeEach((to, from, next) => {
-  console.log(roles);
-
+router.beforeEach(async(to, from, next) => {
+  const roles = store.state.user.roles;
   Nprogress.start();
   if (roles && roles.length > 0) {
     if (to.path === '/login') {
       next('/');
     } else {
+      console.log(to.path);
       next();
     }
   } else {
     if (to.path === '/login') {
       next();
     } else {
-      next(`/login?redirect=${to.path}`);
+      const roles = await store.dispatch('user/getUserInfo');
+      if (roles && roles.length > 0) {
+        next({ ...to, replace: true });
+      } else {
+        next(`/login?redirect=${to.path}`);
+      }
     }
   }
 });

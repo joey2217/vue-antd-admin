@@ -1,33 +1,29 @@
 <template>
-  <a-layout-header style="background: #fff; padding: 0">
-    <a-icon
-      class="trigger"
-      :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-      @click="toggleCollapsed"
-    />
+  <a-layout-header class="navbar"  style="background: #fff; padding: 0">
+    <section class="navbar-left">
+      <Trigger />
+      <Breadcrumb />
+    </section>
+    <section class="navbar-right">
+      <Account />
+    </section>
   </a-layout-header>
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import Trigger from './Trigger.vue';
+import Breadcrumb from './Breadcrumb.vue';
+import Account from './Account.vue';
 
 export default {
   name: 'Navbar',
-  components: {},
-  data () {
+  components: { Trigger, Breadcrumb, Account },
+  data() {
     return {};
   },
-  computed: {
-    ...mapState({
-      collapsed: state => state.app.collapsed
-    })
-  },
-  methods: {
-    ...mapMutations({
-      toggleCollapsed: 'app/TOGGLE_COLLAPSED'
-    })
-  },
-  mounted () {}
+  computed: {},
+  methods: {},
+  mounted() {}
 };
 </script>
 

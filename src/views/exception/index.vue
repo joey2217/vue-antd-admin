@@ -17,7 +17,7 @@
 export default {
   name: 'exception',
   components: {},
-  data () {
+  data() {
     return {
       code: Number(this.$route.params.code) || 404,
       exceptions: [
@@ -35,7 +35,7 @@ export default {
     };
   },
   computed: {
-    currentException () {
+    currentException() {
       const exception = this.exceptions.find(item => item.code === this.code);
       if (exception) {
         return exception;

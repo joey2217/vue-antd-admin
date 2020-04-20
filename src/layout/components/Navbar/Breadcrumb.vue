@@ -1,14 +1,17 @@
 <template>
-  <a-layout-content
-    :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
-  >Content</a-layout-content>
+  <a-breadcrumb class="breadcrumb">
+    <a-breadcrumb-item>
+      <a href>Application Center</a>
+    </a-breadcrumb-item>
+    <a-breadcrumb-item>An Application</a-breadcrumb-item>
+  </a-breadcrumb>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
-  name: 'AppContent',
+  name: 'Breadcrumb',
   components: {},
   data() {
     return {};
@@ -23,5 +26,5 @@ export default {
 };
 </script>
 
-<style   scoped>
+<style lang="scss" scoped>
 </style>
