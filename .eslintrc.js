@@ -15,6 +15,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     semi: [2, 'always'],
     'comma-dangle': [2, 'only-multiline'],
+    'prefer-template': 2,
   },
   overrides: [
     {

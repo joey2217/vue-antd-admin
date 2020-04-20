@@ -60,7 +60,11 @@ router.beforeEach((to, from, next) => {
       next();
     }
   } else {
-
+    if (to.path === '/login') {
+      next();
+    } else {
+      next(`/login?redirect=${to.path}`);
+    }
   }
 });
 
