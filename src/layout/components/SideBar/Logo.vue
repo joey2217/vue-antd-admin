@@ -1,12 +1,12 @@
 <template>
-  <div class="logo">
+  <router-link to="/" tag="div" class="logo">
     <img
       class="img"
       src="https://ae01.alicdn.com/kf/H5333aacd962a47c09b9827d3613efe2ch.png"
       alt="logo"
     />
     <span class="title">Antd-Admin</span>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -25,6 +25,7 @@ export default {
   background: rgba(255, 255, 255, 0.2);
   margin: 16px;
   overflow: hidden;
+  cursor: pointer;
   .img {
     width: 30px;
     height: 30px;

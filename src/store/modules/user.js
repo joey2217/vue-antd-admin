@@ -1,12 +1,37 @@
 import { getUserInfo, logout } from '@/api/user';
 
+const menus = [
+  {
+    path: '/nested',
+    title: '嵌套路由',
+    icon: 'bars',
+    children: [
+      {
+        path: 'menu1',
+        title: 'menu1',
+      },
+      {
+        path: 'menu2',
+        title: 'menu2',
+        children: [
+          {
+            path: 'menu2-1',
+            title: 'menu2-1',
+          },
+        ]
+      }
+    ]
+  }
+];
+
 const user = {
   namespaced: true,
   state: {
     userId: null,
     roles: [],
     avatar: '',
-    name: ''
+    name: '',
+    permissionMenus: menus
   },
   mutations: {
     SET_USER_INFO: (state, payload) => {

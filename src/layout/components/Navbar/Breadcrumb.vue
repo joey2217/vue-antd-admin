@@ -19,6 +19,11 @@ export default {
   computed: {
     ...mapGetters([])
   },
+  watch: {
+    '$route'(to, from) {
+      console.log(to, from);
+    }
+  },
   methods: {
     ...mapActions([])
   },

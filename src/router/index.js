@@ -6,6 +6,9 @@ import store from '../store';
 import Layout from '@/layout/index.vue';
 import Exception from '@/views/exception/index.vue';
 import Login from '@/views/login/index.vue';
+import Dashboard from '@/views/dashboard/index.vue';
+
+import nestedRouter from './nested';
 
 Vue.use(VueRouter);
 
@@ -19,16 +22,25 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Layout,
+    redirect: '/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: Dashboard,
+      }
+    ]
   },
+  nestedRouter,
   {
     path: '/exception/:code',
     name: 'Exception',
     component: Exception,
   },
-  {
-    path: '*',
-    redirect: '/exception/404'
-  }
+  // {
+  //   path: '*',
+  //   redirect: '/exception/404'
+  // }
 ];
 
 const router = new VueRouter({
