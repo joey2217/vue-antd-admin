@@ -1,19 +1,21 @@
 import { Module } from 'vuex';
 import { RootState } from '../index';
 
+const COLLAPSED = 'collapsed';
+
 export interface AppState {
-  isCollapse: boolean;
+  collapsed: boolean;
 }
 const initState: () => AppState = () => ({
-  isCollapse: localStorage.isCollapse === 'T',
+  collapsed: localStorage[COLLAPSED] === 'T',
 });
 
 const app: Module<AppState, RootState> = {
   state: initState(),
   mutations: {
-    TOGGLE_COLLAPSE: (state) => {
-      state.isCollapse = !state.isCollapse;
-      localStorage.isCollapse = state.isCollapse ? 'T' : 'F';
+    TOGGLE_COLLAPSE: (state, payload?: boolean) => {
+      state.collapsed = payload || !state.collapsed;
+      localStorage[COLLAPSED] = state.collapsed ? 'T' : 'F';
     },
   },
 };
