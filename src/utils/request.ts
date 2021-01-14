@@ -1,0 +1,37 @@
+import axios from 'axios';
+import store from '@/store';
+
+const request = axios.create({
+  baseURL: '/api',
+  // withCredentials: true,
+  responseType: 'json',
+  timeout: 5000,
+});
+
+const HEADER_KEY = 'Admin-Token';
+
+request.interceptors.request.use(
+  config => {
+    const token = store.getters.token;
+    if (token) {
+      config.headers[HEADER_KEY] = token;
+    }
+    return config;
+  },
+  error => {
+    console.error(error);
+    return Promise.reject(error);
+  },
+);
+
+request.interceptors.response.use(
+  response => {
+    return response;
+  },
+  error => {
+    console.error('err' + error);
+    return Promise.reject(error);
+  },
+);
+
+export default request;
