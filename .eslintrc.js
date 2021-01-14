@@ -4,19 +4,19 @@ module.exports = {
     node: true,
   },
   extends: [
-    'plugin:vue/essential',
+    'plugin:vue/vue3-essential',
     '@vue/standard',
+    '@vue/typescript/recommended',
   ],
   parserOptions: {
-    parser: 'babel-eslint',
+    ecmaVersion: 2020,
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    semi: [2, 'always'],
-    'comma-dangle': [2, 'only-multiline'],
-    'prefer-template': 2,
-    'space-before-function-paren': [2, 'never'],
+    semi: ['warn', 'always'], // 分号
+    'comma-dangle': ['warn', 'always-multiline'], // 逗号(仅多行)
+    'space-before-function-paren': ['warn', { anonymous: 'always', named: 'never', asyncArrow: 'always' }], // 方法前空格
   },
   overrides: [
     {

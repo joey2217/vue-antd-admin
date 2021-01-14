@@ -1,3 +1,3 @@
 # vue-antd-admin
 
-## [I18N](https://kazupon.github.io/vue-i18n/)
+> [Vue3](https://v3.vuejs.org/) + [Ant Design Vue](https://2x.antdv.com/docs/vue/introduce-cn/) admin interfaces
