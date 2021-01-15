@@ -13,32 +13,39 @@
       class="scroll-container"
       theme="dark"
       mode="inline"
-      v-model:selectedKeys="selectedKeys"
+      :default-selected-keys="defaultSelectedKeys"
     >
-      <a-menu-item key="1">
-        <user-outlined />
-        <span>nav 1</span>
+      <a-menu-item key="/">
+        <router-link to="/">
+          <HomeOutlined />
+          <span>Home</span>
+        </router-link>
       </a-menu-item>
+      <Menus />
     </a-menu>
   </a-layout-sider>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, ref, watch } from 'vue';
-import { UserOutlined } from '@ant-design/icons-vue';
-import Logo from './Logo.vue';
+import { HomeOutlined } from '@ant-design/icons-vue';
 import { useStore } from 'vuex';
 import { RootState } from '@/store';
+import { useRoute } from 'vue-router';
 import useClientWidth from '@/hooks/useClientWidth';
+import Menus from './Menus.vue';
+import Logo from './Logo.vue';
 
 export default defineComponent({
   name: 'Sider',
   components: {
     Logo,
-    UserOutlined,
+    Menus,
+    HomeOutlined,
   },
   setup() {
     const store = useStore<RootState>();
+    const route = useRoute();
     const collapsed = computed(() => store.state.app.collapsed);
     const collapsedWidth = ref(80);
     const { clientWidth } = useClientWidth();
@@ -59,9 +66,9 @@ export default defineComponent({
       },
     );
     return {
-      selectedKeys: ['1'],
       collapsed,
       collapsedWidth,
+      defaultSelectedKeys: [route.path],
     };
   },
 });
