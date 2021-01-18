@@ -19,13 +19,12 @@ function checkPath(path: string): boolean {
   return true;
 }
 
-router.beforeEach(async (to, form) => {
+router.beforeEach(async (to, _form) => {
   nprogress.start();
   if (ALLOW_LIST.includes(to.path)) {
     return true;
   } else {
     const token = store.getters.token;
-    console.log(token);
     if (token) {
       const menus = store.getters.menus as unknown[];
       if (menus.length <= 0) {

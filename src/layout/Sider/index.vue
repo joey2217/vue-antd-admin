@@ -46,6 +46,7 @@ export default defineComponent({
   setup() {
     const store = useStore<RootState>();
     const route = useRoute();
+    const path = computed(() => route.path);
     const collapsed = computed(() => store.state.app.collapsed);
     const collapsedWidth = ref(80);
     const { clientWidth } = useClientWidth();
@@ -68,7 +69,7 @@ export default defineComponent({
     return {
       collapsed,
       collapsedWidth,
-      defaultSelectedKeys: [route.path],
+      defaultSelectedKeys: [path],
     };
   },
 });

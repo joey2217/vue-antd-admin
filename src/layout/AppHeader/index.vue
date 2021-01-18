@@ -4,7 +4,6 @@
       :class="{ collapsed, trigger: true }"
       @click="toggleCollapse"
     />
-    <Breadcrumb />
     <div class="right">
       <Avatar />
     </div>
@@ -16,14 +15,12 @@ import { computed, defineComponent } from 'vue';
 import { MenuUnfoldOutlined } from '@ant-design/icons-vue';
 import { useStore } from 'vuex';
 import { RootState } from '@/store';
-import Breadcrumb from './Breadcrumb.vue';
 import Avatar from './Avatar.vue';
 
 export default defineComponent({
   name: 'AppHeader',
   components: {
     MenuUnfoldOutlined,
-    Breadcrumb,
     Avatar,
   },
   setup() {

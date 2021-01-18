@@ -35,21 +35,34 @@ export default defineComponent({
           return h(
             Menu.SubMenu,
             {
-              title: () =>
-                h(Fragment, [
-                  menu.icon && h(icons[menu.icon]),
-                  h('span', menu.title),
-                ]),
+              key: menu.fullPath,
             },
-            generateMenus(menu.children),
+            {
+              title: h(Fragment, [
+                menu.icon && h(icons[menu.icon]),
+                h('span', menu.title),
+              ]),
+              default: () => menu.children && generateMenus(menu.children),
+            },
           );
         } else {
           return h(
             Menu.Item,
-            h(RouterLink, { to: menu.fullPath }, [
-              menu.icon && h(icons[menu.icon]),
-              h('span', menu.title),
-            ]),
+            {
+              key: menu.fullPath,
+            },
+            h(
+              RouterLink,
+              {
+                to: menu.fullPath,
+              },
+              {
+                default: () => [
+                  menu.icon && h(icons[menu.icon]),
+                  h('span', menu.title),
+                ],
+              },
+            ),
           );
         }
       });
